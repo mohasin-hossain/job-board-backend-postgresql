@@ -1,5 +1,6 @@
 import { ApolloServer } from 'apollo-server-express';
 import { typeDefs } from './app/graphql/schema';
+import { resolvers } from './app/graphql/resolvers';
 import app from './app';
 import dotenv from 'dotenv';
 
@@ -9,6 +10,7 @@ const startServer = async () => {
   // Create Apollo Server
   const apolloServer = new ApolloServer({
     typeDefs,
+    resolvers,
     context: ({ req, res }) => ({ req, res }),
   });
 
