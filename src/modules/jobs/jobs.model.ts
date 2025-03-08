@@ -17,7 +17,13 @@ const getAll = async (): Promise<IJob[]> => {
   return rows;
 };
 
+const getById = async (id: number): Promise<IJob | null> => {
+  const { rows } = await pool.query('SELECT * FROM jobs WHERE id = $1', [id]);
+  return rows[0] || null;
+};
+
 export const JobModel = {
   create,
-  getAll
+  getAll,
+  getById,
 };

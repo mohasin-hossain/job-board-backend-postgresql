@@ -11,7 +11,13 @@ const getAllJobsFromDB = async () => {
   return result;
 };
 
+const getJobByIdFromDB = async (id: number) => {
+  const result = await JobModel.getById(id);
+  return result;
+};
+
 export const JobService = {
   createJobIntoDB,
   getAllJobsFromDB,
+  getJobByIdFromDB,
 };
