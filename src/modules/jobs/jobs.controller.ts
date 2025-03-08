@@ -3,6 +3,7 @@ import { JobService } from './jobs.service';
 import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
+import { ApiError } from '../../errors/apiError';
 
 const createJob = catchAsync(async (req: Request, res: Response) => {
   const job = await JobService.createJobIntoDB(req.body);
@@ -27,7 +28,14 @@ const getAllJobs = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getJobById = catchAsync(async (req: Request, res: Response) => {
-  const job = await JobService.getJobByIdFromDB(Number(req.params.id));
+  const jobId = Number(req.params.id);
+
+  // Validate job ID
+  if (isNaN(jobId)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Job ID!');
+  }
+
+  const job = await JobService.getJobByIdFromDB(jobId);
 
   sendResponse(res, {
     success: !!job,
