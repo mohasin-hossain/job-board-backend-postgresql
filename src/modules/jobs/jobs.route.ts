@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { JobController } from './jobs.controller';
 import { JobValidation } from './jobs.validation';
-import validateRequest from '../../middleware/validateRequest';
+import validateRequest from '../../middlewares/validateRequest';
 
 const router = Router();
 
