@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import router from './routes';
 import globalErrorHandler from './middlewares/globalErrorHandler';
+import notFound from './middlewares/notFound';
 
 const app: Application = express();
 
@@ -12,9 +13,6 @@ app.use(express.json());
 // Application Routes
 app.use('/api/v1', router);
 
-// Global Error Handler
-app.use(globalErrorHandler);
-
 const getController = (req: Request, res: Response) => {
   res.status(200).json({
     success: true,
@@ -23,5 +21,11 @@ const getController = (req: Request, res: Response) => {
 };
 
 app.get('/', getController);
+
+// Global Error Handler
+app.use(globalErrorHandler);
+
+// Not Found
+app.use(notFound);
 
 export default app;
