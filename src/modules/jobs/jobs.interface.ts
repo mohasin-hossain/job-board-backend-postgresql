@@ -4,5 +4,5 @@ export type IJob = {
   description: string;
   company: string;
   location: string;
-  created_at: Date;
+  created_at?: Date;
 };
