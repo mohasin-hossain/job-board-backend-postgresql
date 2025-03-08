@@ -11,6 +11,17 @@ const createJob = async (req: Request, res: Response) => {
   });
 };
 
+const getAllJobs = async (req: Request, res: Response) => {
+  const result = await JobService.getAllJobsFromDB();
+
+  res.status(200).json({
+    success: true,
+    message: 'Jobs retrieved successfully!',
+    data: result,
+  });
+};
+
 export const JobController = {
   createJob,
+  getAllJobs
 };

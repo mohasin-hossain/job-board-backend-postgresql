@@ -10,6 +10,14 @@ const create = async (job: IJob): Promise<IJob> => {
   return rows[0];
 };
 
+const getAll = async (): Promise<IJob[]> => {
+  const { rows } = await pool.query(
+    'SELECT * FROM jobs ORDER BY created_at DESC',
+  );
+  return rows;
+};
+
 export const JobModel = {
   create,
+  getAll
 };
