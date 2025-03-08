@@ -3,10 +3,20 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
 import { ApplicationService } from './applications.service';
-import { JobModel } from '../jobs/jobs.model';
 import { ApiError } from '../../errors/apiError';
+import { checkJobExists } from '../../utils/jobHelpers';
 
 const createApplication = catchAsync(async (req: Request, res: Response) => {
+  const { job_id } = req.body;
+
+  // Validate Job Id
+  if (!job_id || isNaN(Number(job_id))) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Job ID!');
+  }
+
+  // Check if job exists first
+  await checkJobExists(Number(job_id));
+
   const application = await ApplicationService.createApplicationIntoDB(
     req.body,
   );
@@ -29,13 +39,7 @@ const getAllApplicationsByJobId = catchAsync(
     }
 
     // Check if job exists first
-    const jobExists = await JobModel.getById(jobId);
-    if (!jobExists) {
-      throw new ApiError(
-        httpStatus.NOT_FOUND,
-        'No job record found matching the provided Job ID!',
-      );
-    }
+    await checkJobExists(Number(jobId));
 
     const applications =
       await ApplicationService.getAllApplicationsByJobIdFromDB(jobId);

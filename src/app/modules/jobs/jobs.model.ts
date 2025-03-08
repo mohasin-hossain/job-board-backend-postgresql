@@ -18,7 +18,10 @@ const getAll = async (): Promise<IJob[]> => {
 };
 
 const getById = async (id: number): Promise<IJob | null> => {
-  const { rows } = await pool.query('SELECT * FROM jobs WHERE id = $1', [id]);
+  const parsedId = Number(id);
+  const { rows } = await pool.query('SELECT * FROM jobs WHERE id = $1', [
+    parsedId,
+  ]);
   return rows[0] || null;
 };
 
