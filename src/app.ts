@@ -26,6 +26,6 @@ app.get('/', getController);
 app.use(globalErrorHandler);
 
 // Not Found
-app.use(notFound);
+// app.use(notFound);
 
 export default app;
