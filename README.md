@@ -1,17 +1,6 @@
 ```markdown
 # Job Board Backend API
 
-[**Installation**](#installation)  
-[**PostgreSQL Setup**](#postgresql-setup)  
-[**Database Migrations**](#database-migrations)  
-[**Running the Server**](#running-the-server)  
-[**Testing with Postman**](#testing-with-postman)  
-[**REST API Documentation**](#rest-api-documentation)  
-[**GraphQL API Documentation**](#graphql-api-documentation)  
-[**Error Responses**](#error-responses)  
-[**Scripts**](#scripts)  
-[**Troubleshooting**](#troubleshooting)
-
 A complete backend system for managing jobs and applications with REST and GraphQL APIs,
 built with Express.js, PostgreSQL, and TypeScript.
 
