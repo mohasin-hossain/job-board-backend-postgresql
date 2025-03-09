@@ -4,23 +4,40 @@ import rateLimit from 'express-rate-limit';
 import router from './app/routes';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import notFound from './app/middlewares/notFound';
+import helmet from 'helmet';
 
 const app: Application = express();
 
-// Basic rate limiting configuration
+// Security Headers
+app.use(helmet());
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", 'data:'],
+      fontSrc: ["'self'"],
+      connectSrc: ["'self'"],
+    },
+  }),
+);
+
+// Rate limiting configuration
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per window
   message: 'Too many requests from this IP, please try again later',
-  standardHeaders: true, 
-  legacyHeaders: false, 
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Apply rate limiting to all API routes
+// Apply rate limiting to API routes
 app.use('/api/v1', limiter);
 
 // Application Routes
