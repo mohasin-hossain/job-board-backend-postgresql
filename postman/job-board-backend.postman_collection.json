@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"id\": 1,\n  \"title\": \"Software Engineer\",\n  \"description\": \"Responsible for developing and maintaining web applications.\",\n  \"company\": \"Tech Corp\",\n  \"location\": \"Berlin, Germany\",\n  \"created_at\": \"2025-03-08T10:00:00Z\"\n}",
+							"raw": "{\n  \"title\": \"Full Stack Developer\",\n  \"description\": \"Full development position\",\n  \"company\": \"Contexx.ai\",\n  \"location\": \"Remote\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,17 +24,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/api/v1/jobs/create-job",
-							"protocol": "http",
+							"raw": "{{jb-local-url}}/jobs",
 							"host": [
-								"localhost"
+								"{{jb-local-url}}"
 							],
-							"port": "4000",
 							"path": [
-								"api",
-								"v1",
-								"jobs",
-								"create-job"
+								"jobs"
 							]
 						}
 					},
@@ -46,15 +41,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/api/v1/jobs",
-							"protocol": "http",
+							"raw": "{{jb-local-url}}/jobs",
 							"host": [
-								"localhost"
+								"{{jb-local-url}}"
 							],
-							"port": "4000",
 							"path": [
-								"api",
-								"v1",
 								"jobs"
 							]
 						}
@@ -67,15 +58,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/api/v1/jobs/1",
-							"protocol": "http",
+							"raw": "{{jb-local-url}}/jobs/1",
 							"host": [
-								"localhost"
+								"{{jb-local-url}}"
 							],
-							"port": "4000",
 							"path": [
-								"api",
-								"v1",
 								"jobs",
 								"1"
 							]
@@ -95,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"job_id\": 2,\n  \"applicant_name\": \"Remmy\",\n  \"applicant_email\": \"rex@example.com\",\n  \"cover_letter\": \"I have 1 years of experience...\"\n}",
+							"raw": "{\n  \"job_id\": 1,\n  \"applicant_name\": \"Henry\",\n  \"applicant_email\": \"rex@example.com\",\n  \"cover_letter\": \"I have 1 years of experience...\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -103,17 +90,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/api/v1/applications/",
-							"protocol": "http",
+							"raw": "{{jb-local-url}}/applications",
 							"host": [
-								"localhost"
+								"{{jb-local-url}}"
 							],
-							"port": "4000",
 							"path": [
-								"api",
-								"v1",
-								"applications",
-								""
+								"applications"
 							]
 						}
 					},
@@ -123,7 +105,17 @@
 					"name": "Get All Applications By Job ID",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{jb-local-url}}/applications/2",
+							"host": [
+								"{{jb-local-url}}"
+							],
+							"path": [
+								"applications",
+								"2"
+							]
+						}
 					},
 					"response": []
 				}
@@ -131,20 +123,28 @@
 		},
 		{
 			"name": "Not Found Route",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:4000/api/v1/jobssss",
-					"protocol": "http",
+					"raw": "{{jb-local-url}}/jobsss",
 					"host": [
-						"localhost"
+						"{{jb-local-url}}"
 					],
-					"port": "4000",
 					"path": [
-						"api",
-						"v1",
-						"jobssss"
+						"jobsss"
 					]
 				}
 			},

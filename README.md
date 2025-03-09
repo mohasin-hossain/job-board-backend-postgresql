@@ -1,5 +1,5 @@
 ```markdown
-# Job Board Backend API
+# Job Board Backend API (PostgreSQL)
 
 A complete backend system for managing jobs and applications with REST and GraphQL APIs,
 built with Express.js, PostgreSQL, and TypeScript.
@@ -202,14 +202,14 @@ Success Response (200):
   "success": true,
   "statusCode": 200,
   "message": "Job Found!",
-  "data": [
+  "data": 
     {
       "id": 1,
       "title": "Senior Developer",
       "company": "Tech Corp",
       "location": "Remote"
     }
-  ]
+  
 }
 ```
 

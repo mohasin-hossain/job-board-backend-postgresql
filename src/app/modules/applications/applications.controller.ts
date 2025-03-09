@@ -31,18 +31,18 @@ const createApplication = catchAsync(async (req: Request, res: Response) => {
 
 const getAllApplicationsByJobId = catchAsync(
   async (req: Request, res: Response) => {
-    const jobId = Number(req.params.job_id);
+    const job_id = Number(req.params.job_id);
 
     // Validate job ID
-    if (isNaN(jobId)) {
+    if (isNaN(job_id)) {
       throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Job ID!');
     }
 
     // Check if job exists first
-    await checkJobExists(Number(jobId));
+    await checkJobExists(Number(job_id));
 
     const applications =
-      await ApplicationService.getAllApplicationsByJobIdFromDB(jobId);
+      await ApplicationService.getAllApplicationsByJobIdFromDB(job_id);
 
     sendResponse(res, {
       success: true,
