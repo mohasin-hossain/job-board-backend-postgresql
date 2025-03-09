@@ -4,25 +4,8 @@ import rateLimit from 'express-rate-limit';
 import router from './app/routes';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import notFound from './app/middlewares/notFound';
-import helmet from 'helmet';
 
 const app: Application = express();
-
-// Security Headers
-app.use(helmet());
-
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", 'data:'],
-      fontSrc: ["'self'"],
-      connectSrc: ["'self'"],
-    },
-  }),
-);
 
 // Rate limiting configuration
 const limiter = rateLimit({
@@ -55,6 +38,6 @@ app.get('/', (req: Request, res: Response) => {
 app.use(globalErrorHandler);
 
 // Not Found
-// app.use(notFound);
+app.use(notFound);
 
 export default app;
