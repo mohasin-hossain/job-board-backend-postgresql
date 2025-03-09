@@ -48,7 +48,7 @@ built with Express.js, PostgreSQL, and TypeScript.
    DB_HOST=localhost
    DB_PORT=5432
    DB_NAME=job_board
-   PORT=5000
+   PORT=4000
    ```
 
 ## PostgreSQL Setup
@@ -263,7 +263,8 @@ Success Response (200):
 
 ## GraphQL API Documentation
 
-Access Playground: `http://localhost:4000/graphql`
+Access Playground: Open `http://localhost:4000/graphql` in Google Chrome 
+or any modern browser to test your GraphQL queries. 🚀
 
 ### Queries
 
