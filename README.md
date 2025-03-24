@@ -31,7 +31,7 @@ built with Express.js, PostgreSQL, and TypeScript.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/job-board-backend.git
+   git clone https://github.com/yourusername/job-board-backend-postgresql.git
    cd job-board-backend
    ```
 
